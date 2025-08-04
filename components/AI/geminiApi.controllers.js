@@ -57,7 +57,8 @@ Your generated code MUST be:
     *   Ensuring the layout is clean, professional, and visually appealing.
 
 [OUTPUT]
-You MUST return ONLY the complete HTML code, styled with Tailwind CSS classes. No other text, explanations, or comments are permitted. The entire response should be the HTML code, and nothing else.
+You MUST return ONLY the complete HTML code, styled with Tailwind CSS classes. No other text, explanations, or comments are permitted. The entire response should be the HTML code, and nothing else 
+  it's forbidden to add backticks in the beggining or the end of the html.
 `;
     // --- END STRUCTURED PROMPT ---
 
