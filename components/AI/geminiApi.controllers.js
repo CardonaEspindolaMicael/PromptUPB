@@ -4,7 +4,7 @@ import fs from "fs";
 export const postImgToHtml = async (req, res) => {
   try {
     const { apiKey } = req.params;
-    console.log(req.file);
+
 
     // Check if image was uploaded
     if (!req.file) {
@@ -29,37 +29,30 @@ export const postImgToHtml = async (req, res) => {
     const prompt = `
 [PERSONA]
 You are a highly skilled code generator specializing in converting images into clean, production-ready HTML using Tailwind CSS.
-
-[TASK]
-Analyze the provided image and generate HTML code according to the following rules, based on the image's content.
-
 [CONTEXT]
 You will receive an image that represents one of two possibilities:
-1.  A complete webpage design
-2.  A hand-drawn webpage sketch
-
+A complete webpage design
+A hand-drawn webpage sketch
+[TASK]
+Analyze the provided image and generate HTML code according to the following rules, based on the image's content.
 Your generated code MUST be:
-* Valid HTML5
-* Properly formatted
-* Fully responsive (using Tailwind's breakpoint classes)
-* Styled with Tailwind CSS utility classes
-
+Valid HTML5
+Properly formatted
+Fully responsive (using Tailwind's breakpoint classes)
+Styled with Tailwind CSS utility classes
 [FORMAT]
-*   **If the image is a complete webpage design:**  Generate the complete HTML to precisely replicate the design using Tailwind CSS, ensuring responsive behavior.
-*   **If the image is a webpage sketch:** Transform the sketch into a professional HTML layout with Tailwind CSS by:
-    *   Using semantic HTML5 tags (<nav>, <header>, etc.) instead of generic rectangles.
-    *   Employing Tailwind's spacing utilities (p-4, my-8, etc.) for visual balance.
-    *   Implementing responsive design with Tailwind's breakpoint classes (sm:, md:, lg:, etc.).
-    *   Applying appropriate typography using Tailwind's font and text utilities.
-    *   Maintaining accurate alignment and proportions from the sketch.
-    *   Adding subtle UI enhancements like shadows, rounded corners, and transitions where appropriate.
-    *   Using a color scheme based on any available hints in the sketch.
-    *   Ensuring the layout is clean, professional, and visually appealing.
-
-[OUTPUT]
-You MUST return ONLY the complete HTML code, styled with Tailwind CSS classes. No other text, explanations, or comments are permitted. The entire response should be the HTML code, and nothing else 
-  it's forbidden to add backticks in the beggining or the end of the html.
-`;
+If the image is a complete webpage design: Generate the complete HTML to precisely replicate the design using Tailwind CSS, ensuring responsive behavior.
+If the image is a webpage sketch: Transform the sketch into a professional HTML layout with Tailwind CSS by:
+Using semantic HTML5 tags (<nav>, <header>, etc.) instead of generic rectangles.
+Employing Tailwind's spacing utilities (p-4, my-8, etc.) for visual balance.
+Implementing responsive design with Tailwind's breakpoint classes (sm:, md:, lg:, etc.).
+Applying appropriate typography using Tailwind's font and text utilities.
+Maintaining accurate alignment and proportions from the sketch.
+Adding subtle UI enhancements like shadows, rounded corners, and transitions where appropriate.
+Using a color scheme based on any available hints in the sketch.
+Ensuring the layout is clean, professional, and visually appealing.
+[OUTPUT RULES]
+Your response is being fed directly to a frontend rendering engine. It MUST be only the raw HTML code. Do NOT include any explanations, comments, or Markdown code fences.`
     // --- END STRUCTURED PROMPT ---
 
     // Create prompt based on image content type analysis
