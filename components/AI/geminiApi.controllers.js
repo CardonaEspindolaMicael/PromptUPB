@@ -74,7 +74,7 @@ Your response is being fed directly to a frontend rendering engine. It MUST be o
       contents: contents,
       generationConfig: {
         temperature: 0.5, 
-        topK: 3,       
+        topK: 40,       
         topP: 0.4       
       },
     });
